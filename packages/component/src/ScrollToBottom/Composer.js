@@ -2,7 +2,6 @@ import createEmotion from '@emotion/css/create-instance';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import createCSSKey from '../createCSSKey';
 import createDebug from '../utils/debug';
 import EventSpy from '../EventSpy';
 import FunctionContext from './FunctionContext';
@@ -504,7 +503,7 @@ const Composer = ({
   const styleToClassName = useMemo(() => {
     const emotion =
       emotionPool[nonce] ||
-      (emotionPool[nonce] = createEmotion({ key: 'react-scroll-to-bottom--css-' + createCSSKey(), nonce }));
+      (emotionPool[nonce] = createEmotion({ key: 'react-scroll-to-bottom--css-key', nonce }));
 
     return style => emotion.css(style) + '';
   }, [nonce]);
